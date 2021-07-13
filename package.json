@@ -8,6 +8,7 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
+    "node-fetch": "^2.6.1",
     "path": "^0.12.7",
     "prompts": "^2.4.1"
   }

@@ -2,6 +2,10 @@
 
 import prompts from 'prompts'
 import path from 'path'
+import fetch from 'node-fetch'
+import createFabricMod from './create-fabric-mod.js'
+
+const mc_versions = await fetch('https://meta.fabricmc.net/v2/versions/game').then(res => res.json()).then(arr => arr.map(element => element.version))
 
 const questions = [
   {
@@ -19,7 +23,7 @@ const questions = [
   },
   {
     type: 'text',
-    name: 'maven-group',
+    name: 'maven_group',
     message: "What is your project's maven group?",
     initial: 'com.example.modid',
     validate: (name) => {
@@ -32,12 +36,11 @@ const questions = [
   },
   {
     type: 'text',
-    name: 'mc-version',
+    name: 'mc_version',
     message: "What is your project's Minecraft version?",
-    initial: '1.16.1',
+    initial: mc_versions[0],
     validate: (name) => {
-      //TODO: validate using https://meta.fabricmc.net/v2/versions/game, maybe set initial with it too?
-      return true
+      return mc_versions.includes(name)
     }
   },
   {
@@ -77,11 +80,19 @@ const questions = [
     active: 'yes',
     inactive: 'no',
     initial: 'active'
+  },
+  {
+    type: 'toggle',
+    name: 'kotlin',
+    message: "Should I set this mod up with Kotlin?",
+    active: 'yes',
+    inactive: 'no'
   }
 ]
 
 async function run() {
   const responses = await prompts(questions)
+  await createFabricMod(responses, mc_versions)
 }
 
 function validateModId(input) {
