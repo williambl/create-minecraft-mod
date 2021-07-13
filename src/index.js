@@ -40,7 +40,7 @@ const questions = [
     message: "What is your project's Minecraft version?",
     initial: mc_versions[0],
     validate: (name) => {
-      return mc_versions.includes(name)
+      return mc_versions.includes(name) || 'Invalid Minecraft version'
     }
   },
   {
