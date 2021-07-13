@@ -1,0 +1,14 @@
+{
+  "name": "create-minecraft-mod",
+  "version": "1.0.0",
+  "description": "Creates a minecraft mod env",
+  "main": "src/index.js",
+  "repository": "https://github.com/williambl/create-minecraft-mod/",
+  "author": "Will BL",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "path": "^0.12.7",
+    "prompts": "^2.4.1"
+  }
+}
