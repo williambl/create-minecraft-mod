@@ -8,8 +8,16 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
+    "event-stream": "^4.0.1",
+    "mvdir": "^1.0.21",
     "node-fetch": "^2.6.1",
     "path": "^0.12.7",
-    "prompts": "^2.4.1"
+    "prompts": "^2.4.1",
+    "recursive-readdir": "^2.2.2",
+    "tmp": "^0.2.1",
+    "unzip": "^0.1.11"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   }
 }

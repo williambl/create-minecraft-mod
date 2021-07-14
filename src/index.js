@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import prompts from 'prompts'
-import path from 'path'
 import fetch from 'node-fetch'
 import createFabricMod from './create-fabric-mod.js'
 
@@ -20,6 +19,24 @@ const questions = [
       }
       return 'Invalid project name: non [a-z0-9_.-] character found'
     }
+  },
+  {
+    type: 'text',
+    name: 'name',
+    message: "What's your project's name?",
+    initial: prev => prev
+  },
+  {
+    type: 'text',
+    name: 'homepage',
+    message: "What's your project's homepage?",
+    initial: ''
+  },
+  {
+    type: 'text',
+    name: 'source',
+    message: "Where will your project's sources be?",
+    initial: prev => prev
   },
   {
     type: 'text',
